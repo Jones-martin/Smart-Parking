@@ -1,3 +1,4 @@
+import 'package:email_info_sender/offline_map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
         '/wallet': (context) => const WalletPage(),
         '/my_vehicles': (context) => const MyVehiclesPage(),
         '/help': (context) => const HelpSupportPage(),
-        '/privacy': (context) => const PrivacyPolicyPage(),
+        '/privacy': (context) => const OfflineMapScreen(),
         '/terms': (context) => const TermsPage(),
         '/app_settings': (context) => const AppSettingsPage(),
       },
