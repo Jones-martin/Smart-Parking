@@ -51,21 +51,20 @@ class Settings extends StatelessWidget {
 
       // -------------------- BOTTOM NAV --------------------
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
+        backgroundColor: const Color(0xFF2C2C2C), // Match Home Page color if slightly different, or keep black if preferred. Home uses 0xFF2C2C2C. Settings used Colors.black. I will switch to 0xFF2C2C2C for consistency.
+        selectedItemColor: Colors.redAccent,
+        unselectedItemColor: Colors.white70,
         type: BottomNavigationBarType.fixed,
-        currentIndex: 3,
+        currentIndex: 2, // Profile is now index 2
         onTap: (index) {
           if (index == 0) Navigator.pushNamed(context, '/home');
-          if (index == 1) Navigator.pushNamed(context, '/booking');
-          if (index == 3) return;
+          if (index == 1) Navigator.pushNamed(context, '/map');
+          // index 2 is current page
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.local_parking), label: 'Book'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Profile'),
         ],
       ),
 
@@ -128,7 +127,9 @@ class Settings extends StatelessWidget {
 
                     ElevatedButton(
                       onPressed: () {
-                        // Add edit profile later
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Edit Profile feature coming soon!")),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.amber,
@@ -150,10 +151,11 @@ class Settings extends StatelessWidget {
                 // -------------------- MENU ITEMS --------------------
 
                 _menu(context, Icons.account_balance_wallet, "Wallet", "/wallet"),
+                _menu(context, Icons.list_alt, "My Bookings", "/my_bookings"),
                 _menu(context, Icons.directions_car, "My vehicle", "/my_vehicles"),
                 _menu(context, Icons.help_outline, "Help & support", "/help"),
                 _menu(context, Icons.lock_outline, "Privacy policy", "/privacy"),
-                _menu(context, Icons.description_outlined, "Terms and conditions", "/terms"),
+                _menu(context, Icons.admin_panel_settings_outlined, "Admin Panel", "/admin"),
                 _menu(context, Icons.settings_outlined, "App settings", "/app_settings"),
 
                 const Spacer(),
